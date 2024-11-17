@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ember UI</title>
+    <script type="module" src="/src/index.ts"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: system-ui, -apple-system, sans-serif;
+        background-color: #f5f5f5;
+      }
+      .demo-section {
+        margin-bottom: 2rem;
+      }
+      h2 {
+        margin-bottom: 1rem;
+      }
+      .demo-grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ember UI Demo</h1>
+
+    <div class="demo-section">
+      <h2>Buttons</h2>
+      <ds-button>Primary Button</ds-button>
+      <ds-button variant="secondary">Secondary Button</ds-button>
+      <ds-button variant="outlined">Outlined Button</ds-button>
+      <ds-button disabled>Disabled Button</ds-button>
+    </div>
+
+    <div class="demo-section">
+      <h2>Form Controls</h2>
+      <ds-input label="Username" placeholder="Enter your username"></ds-input>
+
+      <ds-select
+        label="Choose an option"
+        data-options='[
+        { "value": "1", "label": "Option 1" },
+        { "value": "2", "label": "Option 2" },
+        { "value": "3", "label": "Option 3" }
+      ]'
+      ></ds-select>
+
+      <ds-switch label="Enable feature"></ds-switch>
+    </div>
+
+    <div class="demo-section">
+      <h2>Badges</h2>
+      <ds-badge>New</ds-badge>
+      <ds-badge variant="secondary">Beta</ds-badge>
+      <ds-badge variant="outline">Premium</ds-badge>
+    </div>
+
+    <div class="demo-section">
+      <h2>Tooltips</h2>
+      <ds-tooltip text="This is a helpful tooltip">
+        <ds-button>Hover me</ds-button>
+      </ds-tooltip>
+      <ds-tooltip text="Bottom tooltip" position="bottom">
+        <ds-badge>Help</ds-badge>
+      </ds-tooltip>
+    </div>
+
+    <div class="demo-section">
+      <h2>Modal</h2>
+      <ds-button id="openModal">Open Modal</ds-button>
+      <ds-modal title="Example Modal">
+        <p>This is the modal content. You can put any content here.</p>
+        <div slot="footer">
+          <ds-button variant="secondary" id="closeModal">Cancel</ds-button>
+          <ds-button>Confirm</ds-button>
+        </div>
+      </ds-modal>
+      <script>
+        const modal = document.querySelector('ds-modal');
+        const openBtn = document.querySelector('#openModal');
+        const closeBtn = document.querySelector('#closeModal');
+
+        openBtn.addEventListener('click', () => (modal.open = true));
+        closeBtn.addEventListener('click', () => (modal.open = false));
+      </script>
+    </div>
+
+    <div class="demo-section">
+      <h2>Cards</h2>
+      <div class="demo-grid">
+        <ds-card
+          title="Feature Card"
+          subtitle="A brief description of the feature"
+        >
+          <p>
+            This is a feature card that showcases the card component's
+            capabilities. It supports headers, content, and footers.
+          </p>
+          <div slot="footer">
+            <ds-button variant="primary">Learn More</ds-button>
+          </div>
+        </ds-card>
+
+        <ds-card title="Simple Card">
+          <p>
+            A simpler card without a subtitle or footer, showing the component's
+            flexibility.
+          </p>
+        </ds-card>
+      </div>
+    </div>
+  </body>
+</html>
